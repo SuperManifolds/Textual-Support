@@ -1,0 +1,150 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>insertlink</key>
+	<array>
+		<dict>
+			<key>Name</key>
+			<string>FAQ</string>
+			<key>Message</key>
+			<string>http://is.gd/QxBphL</string>
+		</dict>
+		<dict>
+			<key>Name</key>
+			<string>Current Preview Link</string>
+			<key>Message</key>
+			<string>https://t.co/xu1BflnKNa</string>
+		</dict>
+		<dict>
+			<key>Name</key>
+			<string>Newsletter</string>
+			<key>Message</key>
+			<string>http://t.co/fEMllsk</string>
+		</dict>
+	</array>
+	<key>userlist</key>
+	<array>
+		<dict>
+			<key>Name</key>
+			<string>FAQ</string>
+			<key>Message</key>
+			<string>please refer to our frequently asked questions (FAQ) by following this link: http://is.gd/QxBphL</string>
+		</dict>
+		<dict>
+			<key>Name</key>
+			<string>Textual Timeout</string>
+			<key>Message</key>
+			<string>if you keep receiving disconnects due to a timeout in Textual, then chances are good that there is an intermediate connection issue between you and the IRC network being connected to. For more information see: http://is.gd/LAhMyQ</string>
+		</dict>
+		<dict>
+			<key>Name</key>
+			<string>SASL</string>
+			<key>Message</key>
+			<string>Textual automatically attempts SASL PLAIN authentication on servers that support it. See this link for more information: http://is.gd/b6ZI0i</string>
+		</dict>
+		<dict>
+			<key>Name</key>
+			<string>Self Compile</string>
+			<key>Message</key>
+			<string>please view https://github.com/Codeux/Textual/blob/Textual-5/README.md for information on compiling Textual.</string>
+		</dict>
+		<dict>
+			<key>Name</key>
+			<string>Yosemite</string>
+			<key>Message</key>
+			<string>Textual 4 does not support OS X 10.10 Yosemite, you may sign up to previews of Textual 5 here: http://t.co/fEMllsk, and download the current preview here: https://t.co/xu1BflnKNa. I would like to note that Textual 5 and OS X 10.10 are both BETA, you may encounter instability.</string>
+		</dict>
+		<dict>
+			<key>Name</key>
+			<string>seperator</string>
+		</dict>
+		<dict>
+			<key>Name</key>
+			<string>Feature Request</string>
+			<key>Message</key>
+			<string>to submit your feature request please contact support@codeux.com</string>
+		</dict>
+		<dict>
+			<key>Name</key>
+			<string>Migrate Preferences</string>
+			<key>Message</key>
+			<string>see this link to learn how to import and export your Textual preferences: http://is.gd/A7VsrF</string>
+		</dict>
+		<dict>
+			<key>Name</key>
+			<string>Customize Shortcuts</string>
+			<key>Message</key>
+			<string>see this link to learn how to add a new, or override an existing keyboard shortcut in Textual: http://is.gd/pNMMPs</string>
+		</dict>
+		<dict>
+			<key>Name</key>
+			<string>Writing Plugins</string>
+			<key>Message</key>
+			<string>see this link for information on how to write Objective-C plug-ins for Textual: http://is.gd/ZW1MfB</string>
+		</dict>
+		<dict>
+			<key>Name</key>
+			<string>Writing Scripts</string>
+			<key>Message</key>
+			<string>see this link for information on how to write scripts for Textual: http://is.gd/OSptgp</string>
+		</dict>
+		<dict>
+			<key>Name</key>
+			<string>Creating Styles</string>
+			<key>Message</key>
+			<string>see this link for information on how to create and edit styles for Textual: http://is.gd/SxX9VY</string>
+		</dict>
+		<dict>
+			<key>Name</key>
+			<string>seperator</string>
+		</dict>
+		<dict>
+			<key>Name</key>
+			<string>3rd Party Addons</string>
+			<key>Message</key>
+			<string>see this link for a list of some of the 3rd party plug-ins, scripts, and styles for Textual: http://is.gd/VK1POm</string>
+		</dict>
+		<dict>
+			<key>Name</key>
+			<string>iCloud Syncing</string>
+			<key>Message</key>
+			<string>look here for instructions on using Textual with iCloud: http://is.gd/YWQBaL</string>
+		</dict>
+		<dict>
+			<key>Name</key>
+			<string>Command Index</string>
+			<key>Message</key>
+			<string>here is a list of commands that are built into the Textual IRC Client: http://is.gd/FW3q6T</string>
+		</dict>
+		<dict>
+			<key>Name</key>
+			<string>Keyboard Shortcuts</string>
+			<key>Message</key>
+			<string>here is a list of keyboard shortcuts that are built into the Textual IRC Client: http://is.gd/87RyD2</string>
+		</dict>
+		<dict>
+			<key>Name</key>
+			<string>seperator</string>
+		</dict>
+		<dict>
+			<key>Name</key>
+			<string>Newsletter</string>
+			<key>Message</key>
+			<string>you can sign up to the Textual newsletter to get pre-release copies of Textual at http://is.gd/urItDO</string>
+		</dict>
+		<dict>
+			<key>Name</key>
+			<string>App Store Download</string>
+			<key>Message</key>
+			<string>the Textual IRC Client can be downloaded from: http://www.textualapp.com/</string>
+		</dict>
+		<dict>
+			<key>Name</key>
+			<string>Twitter</string>
+			<key>Message</key>
+			<string>the official Textual twitter account can be found at http://twitter.com/Textual</string>
+		</dict>
+	</array>
+</dict>
+</plist>
