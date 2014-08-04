@@ -22,6 +22,12 @@
 			<key>Message</key>
 			<string>http://t.co/fEMllsk</string>
 		</dict>
+		<dict>
+			<key>Name</key>
+			<string>Migrate Preferences</string>
+			<key>Message</key>
+			<string>http://www.codeux.com/textual/wiki/Migrating-Preferences.wiki</string>
+		</dict>
 	</array>
 	<key>userlist</key>
 	<array>
