@@ -8,9 +8,9 @@
 
 #import <Cocoa/Cocoa.h>
 #import <Foundation/Foundation.h>
+#import "TextualApplication.h"
 
 @interface TPI_TextualSupportHelper : NSObject
-
 + (void)addItemsFromArrayToMenu:(NSMenu *)menu menuItems:(NSArray *)menuItems selector:(SEL)selector;
 
 + (void)addMenuItemTitled:(NSString *)title
@@ -18,6 +18,7 @@
                    toMenu:(NSMenu *)parentMenu
                   message:(NSString *)message;
 
-+ (BOOL)userIsChannelRegular:(NSString *)nickname;
++ (BOOL)userIsChannelRegular:(NSString *)nickname client:(IRCClient *)client channel:(IRCChannel *)channel;
+
 
 @end

@@ -1,7 +1,7 @@
 dependencies: \
-  /Users/alex/TextualSupport/TPI_TextualSupport_MenuController.m \
-  /Users/alex/TextualSupport/TPI_TextualSupport_MenuController.h \
-  /Users/alex/TextualSupport/TPI_TextualSupport.h \
+  /Users/alex/Textual-Support/TPI_TextualSupport_MenuController.m \
+  /Users/alex/Textual-Support/TPI_TextualSupport_MenuController.h \
+  /Users/alex/Textual-Support/TPI_TextualSupport.h \
   /Applications/Textual\ 5.app/Contents/Headers/TextualApplication.h \
   /Applications/Textual\ 5.app/Contents/Frameworks/BlowfishEncryption.framework/Headers/BlowfishEncryption.h \
   /Applications/Textual\ 5.app/Contents/Frameworks/BlowfishEncryption.framework/Headers/Base64Encoding.h \
@@ -19,19 +19,22 @@ dependencies: \
   /Applications/Textual\ 5.app/Contents/Headers/GCDAsyncSocket.h \
   /Applications/Textual\ 5.app/Contents/Headers/GCDAsyncSocketExtensions.h \
   /Applications/Textual\ 5.app/Contents/Headers/RLMAsyncSocket.h \
-  /Applications/Textual\ 5.app/Contents/Headers/GRMustache.h \
+  /Applications/Textual\ 5.app/Contents/Headers/IRCClientConfig.h \
   /Applications/Textual\ 5.app/Contents/Headers/GRMustacheAvailabilityMacros.h \
-  /Applications/Textual\ 5.app/Contents/Headers/GRMustacheTemplate.h \
+  /Applications/Textual\ 5.app/Contents/Headers/GRMustache.h \
   /Applications/Textual\ 5.app/Contents/Headers/GRMustacheConfiguration.h \
-  /Applications/Textual\ 5.app/Contents/Headers/GRMustacheTagDelegate.h \
-  /Applications/Textual\ 5.app/Contents/Headers/GRMustacheTemplateRepository.h \
-  /Applications/Textual\ 5.app/Contents/Headers/GRMustacheFilter.h \
-  /Applications/Textual\ 5.app/Contents/Headers/GRMustacheError.h \
-  /Applications/Textual\ 5.app/Contents/Headers/GRMustacheVersion.h \
+  /Applications/Textual\ 5.app/Contents/Headers/GRMustacheContentType.h \
   /Applications/Textual\ 5.app/Contents/Headers/GRMustacheContext.h \
-  /Applications/Textual\ 5.app/Contents/Headers/GRMustacheRendering.h \
-  /Applications/Textual\ 5.app/Contents/Headers/GRMustacheTag.h \
+  /Applications/Textual\ 5.app/Contents/Headers/GRMustacheError.h \
+  /Applications/Textual\ 5.app/Contents/Headers/GRMustacheFilter.h \
   /Applications/Textual\ 5.app/Contents/Headers/GRMustacheLocalizer.h \
+  /Applications/Textual\ 5.app/Contents/Headers/GRMustacheRendering.h \
+  /Applications/Textual\ 5.app/Contents/Headers/GRMustacheSafeKeyAccess.h \
+  /Applications/Textual\ 5.app/Contents/Headers/GRMustacheTag.h \
+  /Applications/Textual\ 5.app/Contents/Headers/GRMustacheTagDelegate.h \
+  /Applications/Textual\ 5.app/Contents/Headers/GRMustacheTemplate.h \
+  /Applications/Textual\ 5.app/Contents/Headers/GRMustacheTemplateRepository.h \
+  /Applications/Textual\ 5.app/Contents/Headers/GRMustacheVersion.h \
   /Applications/Textual\ 5.app/Contents/Headers/GTMDefines.h \
   /Applications/Textual\ 5.app/Contents/Headers/GTMEncodeHTML.h \
   /Applications/Textual\ 5.app/Contents/Headers/GTMEncodeURL.h \
@@ -50,7 +53,6 @@ dependencies: \
   /Applications/Textual\ 5.app/Contents/Frameworks/Growl.framework/Headers/GrowlDefines.h \
   /Applications/Textual\ 5.app/Contents/Frameworks/Growl.framework/Headers/GrowlApplicationBridge.h \
   /Applications/Textual\ 5.app/Contents/Headers/IRCConnection.h \
-  /Applications/Textual\ 5.app/Contents/Headers/IRCClientConfig.h \
   /Applications/Textual\ 5.app/Contents/Headers/IRCColorFormat.h \
   /Applications/Textual\ 5.app/Contents/Headers/TVCTextViewWithIRCFormatter.h \
   /Applications/Textual\ 5.app/Contents/Headers/IRCCommandIndex.h \
@@ -76,6 +78,8 @@ dependencies: \
   /Applications/Textual\ 5.app/Contents/Headers/NSImageHelper.h \
   /Applications/Textual\ 5.app/Contents/Headers/NSMenuHelper.h \
   /Applications/Textual\ 5.app/Contents/Headers/NSNumberHelper.h \
+  /Applications/Textual\ 5.app/Contents/Headers/NSValueHelper.h \
+  /Applications/Textual\ 5.app/Contents/Headers/NSObjectHelper.h \
   /Applications/Textual\ 5.app/Contents/Headers/NSOutlineViewHelper.h \
   /Applications/Textual\ 5.app/Contents/Headers/NSPasteboardHelper.h \
   /Applications/Textual\ 5.app/Contents/Headers/NSRangeHelper.h \
@@ -143,7 +147,6 @@ dependencies: \
   /Applications/Textual\ 5.app/Contents/Headers/TVCLogView.h \
   /Applications/Textual\ 5.app/Contents/Headers/TVCInputPromptDialog.h \
   /Applications/Textual\ 5.app/Contents/Headers/TVCMainWindowTextView.h \
-  /Applications/Textual\ 5.app/Contents/Headers/TVCBasicTableViewSeparatorCell.h \
   /Applications/Textual\ 5.app/Contents/Headers/TVCBasicTableView.h \
   /Applications/Textual\ 5.app/Contents/Headers/TVCLogControllerHistoricLogFile.h \
   /Applications/Textual\ 5.app/Contents/Headers/TVCLogControllerOperationQueue.h \
@@ -177,4 +180,5 @@ dependencies: \
   /Applications/Textual\ 5.app/Contents/Headers/TXMasterController.h \
   /Applications/Textual\ 5.app/Contents/Headers/TXMenuController.h \
   /Applications/Textual\ 5.app/Contents/Headers/TXSharedApplication.h \
-  /Applications/Textual\ 5.app/Contents/Headers/TXUserInterface.h
+  /Applications/Textual\ 5.app/Contents/Headers/TXUserInterface.h \
+  /Users/alex/Textual-Support/TPI_TextualSupportHelper.h

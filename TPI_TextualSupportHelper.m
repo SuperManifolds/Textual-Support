@@ -35,8 +35,14 @@
     [parentMenu addItem:[newMenuItem copy]];
 }
 
-+ (BOOL)userIsChannelRegular:(NSString *)nickname {
-    
++ (BOOL)userIsChannelRegular:(NSString *)nickname client:(IRCClient *)client channel:(IRCChannel *)channel {
+    NSString *localNicknameOfUser = [client localNickname];
+    if ([nickname isEqualToString:localNicknameOfUser]) {
+        return YES;
+    }
+    if ([nickname isEqualIgnoringCase:@"milky"] || [nickname isEqualIgnoringCase:@"f0lder"]) {
+        return YES;
+    }
     return NO;
 }
 
