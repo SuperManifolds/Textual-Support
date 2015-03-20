@@ -57,27 +57,9 @@
 		</dict>
 		<dict>
 			<key>Name</key>
-			<string>Self Compile</string>
-			<key>Message</key>
-			<string>please view https://github.com/Codeux/Textual/blob/Textual-5/README.md for information on compiling Textual.</string>
-		</dict>
-		<dict>
-			<key>Name</key>
 			<string>Yosemite</string>
 			<key>Message</key>
 			<string>Textual 4 does not support OS X Yosemite. You will need to buy Textual 5 available here: http://www.codeux.com/textual/  For questions regarding the upgrade see this link: http://is.gd/QLNYoP</string>
-		</dict>
-		<dict>
-			<key>Name</key>
-			<string>#topicgate2014</string>
-			<key>Message</key>
-			<string>the issues with Textual&apos;s topic bar on OSX Yosemite is caused by a technology maintained by Apple that Textual uses to display the chat. We have reported the issue to them. See this link for more information: http://is.gd/qEIlUL</string>
-		</dict>
-		<dict>
-			<key>Name</key>
-			<string>Textual Input Field Settings issue</string>
-			<key>Message</key>
-			<string>please have a look at this link for help with fixing issues with the Textual input field not saving your settings http://is.gd/efLagb</string>
 		</dict>
 		<dict>
 			<key>Name</key>
@@ -97,7 +79,7 @@
 		</dict>
 		<dict>
 			<key>Name</key>
-			<string>Customize Shortcuts</string>
+			<string>Customise Shortcuts</string>
 			<key>Message</key>
 			<string>see this link to learn how to add a new, or override an existing keyboard shortcut in Textual: http://is.gd/jhKlVY</string>
 		</dict>
@@ -105,19 +87,19 @@
 			<key>Name</key>
 			<string>Writing Plugins</string>
 			<key>Message</key>
-			<string>see this link for information on how to write Objective-C plug-ins for Textual: http://is.gd/bUJqPJ</string>
+			<string>see this link for information on how to write Objective-C or Swift plug-ins for Textual: http://www.codeux.com/textual/help/Writing-Plugins.kb</string>
 		</dict>
 		<dict>
 			<key>Name</key>
 			<string>Writing Scripts</string>
 			<key>Message</key>
-			<string>see this link for information on how to write scripts for Textual: http://is.gd/5FAouf</string>
+			<string>see this link for information on how to write scripts for Textual: http://www.codeux.com/textual/help/Writing-Scripts.kb</string>
 		</dict>
 		<dict>
 			<key>Name</key>
 			<string>Creating Styles</string>
 			<key>Message</key>
-			<string>see this link for information on how to create and edit styles for Textual: http://is.gd/RlJAQS</string>
+			<string>see this link for information on how to create and edit styles for Textual: http://www.codeux.com/textual/help/Styles.kb</string>
 		</dict>
 		<dict>
 			<key>Name</key>

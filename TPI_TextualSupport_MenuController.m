@@ -12,7 +12,6 @@
 
 - (void)postLinkToInputField:(id)sender {
     TVCMainWindowTextView *inputTextField = [mainWindow() inputTextField];
-    LogToConsole(@"%@", [(NSMenuItem *)sender userInfo]);
     NSMutableAttributedString *newTextFieldValue = [[inputTextField attributedStringValue] mutableCopy];
     NSMutableAttributedString *linkFromDictionary = [[NSMutableAttributedString alloc] initWithString:[sender representedObject]
                                                                                   attributes:@{NSForegroundColorAttributeName: [inputTextField preferredFontColor]}];
@@ -111,46 +110,9 @@
     });
 }
 
-- (void)trackUserInitiated:(id)sender {
-    for (IRCUser *m in [self selectedMembers:sender]) {
-        [TPI_TextualSupport.userTrackList addObject:[m nickname]];
-    }
-}
-
-- (void)trackUserStopped:(id)sender {
-    for (IRCUser *m in [self selectedMembers:sender]) {
-        [TPI_TextualSupport.userTrackList removeObject:[m nickname]];
-    }
-}
-
-/*- (BOOL)validateMenuItem:(NSMenuItem *)item {
+- (BOOL)validateMenuItem:(NSMenuItem *)item {
     NSInteger menuItemTag = [item tag];
-    switch (menuItemTag) {
-        case 424201: {
-            IRCChannel *c = [mainWindow() selectedChannel];
-            if ([[c name] isEqualIgnoringCase:@"#textual"] == NO && [[c name] isEqualIgnoringCase:@"#textual-unregistered"] == NO) {
-                [item setHidden:YES];
-                return NO;
-            }
-            NSString *nameOfFirstSelectedUser = [[self selectedMembers:nil][0] nickname];
-            BOOL userIsInTrackList = [TPI_TextualSupport.userTrackList containsObject:nameOfFirstSelectedUser];
-            [item setHidden:userIsInTrackList];
-            return YES;
-        }
-        case 424202: {
-            IRCChannel *c = [mainWindow() selectedChannel];
-            if ([[c name] isEqualIgnoringCase:@"#textual"] == NO && [[c name] isEqualIgnoringCase:@"#textual-unregistered"] == NO) {
-                [item setHidden:YES];
-                return NO;
-            }
-            NSString *nameOfFirstSelectedUser = [[self selectedMembers:nil][0] nickname];
-            BOOL userIsInTrackList = [TPI_TextualSupport.userTrackList containsObject:nameOfFirstSelectedUser];
-            [item setHidden:(userIsInTrackList == NO)];
-            return YES;
-        }
-        default:
-            return [[mainWindow() menuController] validateMenuItemTag:menuItemTag forItem:item];
-    }
-}*/
+    return [[mainWindow() menuController] validateMenuItemTag:menuItemTag forItem:item];
+}
 
 @end
