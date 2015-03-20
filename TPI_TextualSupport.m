@@ -36,30 +36,31 @@ NSDictionary *messageCacheForSupportChannel;
     [textualInsertLinksMenuItems setSubmenu:textualInsertLinksMenu];
     [inputFieldMenu addItem:[textualInsertLinksMenuItems copy]];
     
+    NSInteger indexOfBanItem = [userlistMenu indexOfItemWithTitle:@"Ban"];
+    
     NSMenuItem *textualUnbanUserMenuItem = [[NSMenuItem alloc] init];
-    [textualUnbanUserMenuItem setTitle:@"Unban User"];
+    [textualUnbanUserMenuItem setTitle:@"Unban"];
     [textualUnbanUserMenuItem setKeyEquivalent:@""];
     [textualUnbanUserMenuItem setTarget:menuController()];
     [textualUnbanUserMenuItem setAction:@selector(unmuteUserOnChannel:)];
     [textualUnbanUserMenuItem setTag:424201];
-    [userlistMenu addItem:textualUnbanUserMenuItem ];
+    [userlistMenu insertItem:textualUnbanUserMenuItem atIndex:(indexOfBanItem + 1)];
     
     NSMenuItem *textualMuteUserMenuItem = [[NSMenuItem alloc] init];
-    [textualMuteUserMenuItem setTitle:@"Mute User"];
+    [textualMuteUserMenuItem setTitle:@"Mute"];
     [textualMuteUserMenuItem setKeyEquivalent:@""];
     [textualMuteUserMenuItem setTarget:menuController()];
     [textualMuteUserMenuItem setAction:@selector(muteUserOnChannel:)];
     [textualMuteUserMenuItem setTag:424202];
-    [userlistMenu addItem:textualMuteUserMenuItem];
+    [userlistMenu insertItem:textualMuteUserMenuItem atIndex:(indexOfBanItem + 2)];
     
     
     NSMenuItem *textualUnmuteUserMenuItem = [[NSMenuItem alloc] init];
-    [textualUnmuteUserMenuItem setTitle:@"Unmute User"];
+    [textualUnmuteUserMenuItem setTitle:@"Unmute"];
     [textualUnmuteUserMenuItem setKeyEquivalent:@""];
     [textualUnmuteUserMenuItem setTarget:menuController()];
     [textualUnmuteUserMenuItem setAction:@selector(unmuteUserOnChannel:)];
-    [textualUnmuteUserMenuItem setTag:424203];
-    [userlistMenu addItem:textualUnmuteUserMenuItem];
+    [userlistMenu insertItem:textualUnmuteUserMenuItem atIndex:(indexOfBanItem + 3)];
     
     self.menuController.userControlMenu = userlistMenu;
     
