@@ -2,6 +2,7 @@
 #include "TPI_TextualSupportHelper.h"
 
 @interface TXMenuController (TPI_TextualSupport_MenuController)
+
 - (void)postMenuMessage:(id)sender;
 - (void)postLinkToInputField:(id)sender;
 

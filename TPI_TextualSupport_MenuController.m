@@ -1,6 +1,7 @@
 #import "TPI_TextualSupport_MenuController.h"
 
 @implementation TXMenuController (TPI_TextualSupport_MenuController)
+
 - (void)postMenuMessage:(id)sender {
     [self performBlockOnSelectedUsers:sender withBlock:^(IRCClient *selectedClient, IRCChannel *selectedChannel){
         for (IRCUser *selectedUser in [self selectedMembers:sender]) {
@@ -29,9 +30,7 @@
 - (void)giveVoiceStatusToUser:(id)sender {
     [self performBlockOnSelectedUsers:sender withBlock:^(IRCClient *selectedClient, IRCChannel *selectedChannel){
         for (IRCUser *selectedUser in [self selectedMembers:sender]) {
-            [self performBlockOnMainThread:^{
-                [selectedClient sendCommand:[NSString stringWithFormat:@"CS VOICE %@ %@", [selectedChannel name], selectedUser.nickname]];
-            }];
+            [selectedClient sendCommand:[NSString stringWithFormat:@"CS VOICE %@ %@", [selectedChannel name], selectedUser.nickname]];
         }
     }];
 }
