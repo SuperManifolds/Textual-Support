@@ -28,7 +28,7 @@
 + (void)addMenuItemTitled:(NSString *)title withSelector:(SEL)anAction toMenu:(NSMenu *)parentMenu message:(NSString *) message {
     NSMenuItem *newMenuItem = [[NSMenuItem alloc] init];
     [newMenuItem setTitle:title];
-    [newMenuItem setKeyEquivalent:NSStringEmptyPlaceholder];
+    [newMenuItem setKeyEquivalent:@""];
     [newMenuItem setRepresentedObject: message];
     [newMenuItem setTarget:menuController()];
     [newMenuItem setAction:anAction];
@@ -45,7 +45,5 @@
     }
     return NO;
 }
-
-
 
 @end

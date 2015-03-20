@@ -11,11 +11,12 @@
 - (void)revokeVoiceStatusFromUser:(id)sender;
 
 - (void)banUserFromChannel:(id)sender;
+- (void)unbanUserFromChannel:(id)sender;
 - (void)kickUserFromChannel:(id)sender;
 - (void)kickBanUserFromChannel:(id)sender;
+- (void)muteUserOnChannel:(id)sender;
+- (void)unmuteUserOnChannel:(id)sender;
 
-- (void)trackUserInitiated:(id)sender;
-- (void)trackUserStopped:(id)sender;
 - (BOOL)validateMenuItem:(NSMenuItem *)item;
 
 @end

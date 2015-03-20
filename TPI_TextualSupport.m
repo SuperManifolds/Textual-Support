@@ -18,7 +18,7 @@ NSDictionary *messageCacheForSupportChannel;
     
     NSMenuItem *textualSupportMenuItems = [[NSMenuItem alloc] init];
 	[textualSupportMenuItems setTitle:@"Textual Support"];
-	[textualSupportMenuItems setKeyEquivalent:NSStringEmptyPlaceholder];
+	[textualSupportMenuItems setKeyEquivalent:@""];
     NSMenu *textualSupportMenu = [NSMenu new];
 	[textualSupportMenu setTitle:@"Textual Support"];
     NSArray *supportMessages = dict[@"userlist"];
@@ -28,13 +28,38 @@ NSDictionary *messageCacheForSupportChannel;
     
     NSMenuItem *textualInsertLinksMenuItems = [[NSMenuItem alloc] init];
     [textualInsertLinksMenuItems setTitle:@"Insert Support Link"];
-    [textualInsertLinksMenuItems setKeyEquivalent:NSStringEmptyPlaceholder];
+    [textualInsertLinksMenuItems setKeyEquivalent:@""];
     NSMenu *textualInsertLinksMenu = [NSMenu new];
     [textualInsertLinksMenuItems setTitle:@"Insert Support Link"];
     NSArray *insertLinkMessages = dict[@"insertlink"];
     [TPI_TextualSupportHelper addItemsFromArrayToMenu:textualInsertLinksMenu menuItems:insertLinkMessages selector:@selector(postLinkToInputField:)];
     [textualInsertLinksMenuItems setSubmenu:textualInsertLinksMenu];
     [inputFieldMenu addItem:[textualInsertLinksMenuItems copy]];
+    
+    NSMenuItem *textualUnbanUserMenuItem = [[NSMenuItem alloc] init];
+    [textualUnbanUserMenuItem setTitle:@"Unban User"];
+    [textualUnbanUserMenuItem setKeyEquivalent:@""];
+    [textualUnbanUserMenuItem setTarget:menuController()];
+    [textualUnbanUserMenuItem setAction:@selector(unmuteUserOnChannel:)];
+    [textualUnbanUserMenuItem setTag:424201];
+    [userlistMenu addItem:textualUnbanUserMenuItem ];
+    
+    NSMenuItem *textualMuteUserMenuItem = [[NSMenuItem alloc] init];
+    [textualMuteUserMenuItem setTitle:@"Mute User"];
+    [textualMuteUserMenuItem setKeyEquivalent:@""];
+    [textualMuteUserMenuItem setTarget:menuController()];
+    [textualMuteUserMenuItem setAction:@selector(muteUserOnChannel:)];
+    [textualMuteUserMenuItem setTag:424202];
+    [userlistMenu addItem:textualMuteUserMenuItem];
+    
+    
+    NSMenuItem *textualUnmuteUserMenuItem = [[NSMenuItem alloc] init];
+    [textualUnmuteUserMenuItem setTitle:@"Unmute User"];
+    [textualUnmuteUserMenuItem setKeyEquivalent:@""];
+    [textualUnmuteUserMenuItem setTarget:menuController()];
+    [textualUnmuteUserMenuItem setAction:@selector(unmuteUserOnChannel:)];
+    [textualUnmuteUserMenuItem setTag:424203];
+    [userlistMenu addItem:textualUnmuteUserMenuItem];
     
     self.menuController.userControlMenu = userlistMenu;
     

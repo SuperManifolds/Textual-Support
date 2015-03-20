@@ -2,12 +2,11 @@
 
 @implementation TXMenuController (TPI_TextualSupport_MenuController)
 - (void)postMenuMessage:(id)sender {
-    IRCClient *u = [mainWindow() selectedClient];
-    PointerIsEmptyAssert(u);
-    for (IRCUser *m in [self selectedMembers:sender]) {
-        [[u invokeOnMainThread] sendPrivmsgToSelectedChannel:[NSString stringWithFormat:@"%@, %@", m.nickname, [sender representedObject]]];
-    }
-    [self deselectMembers:sender];
+    [self performBlockOnSelectedUsers:sender withBlock:^(IRCClient *selectedClient, IRCChannel *selectedChannel){
+        for (IRCUser *selectedUser in [self selectedMembers:sender]) {
+            [selectedClient sendPrivmsg:[NSString stringWithFormat:@"%@, %@", selectedUser.nickname, [sender representedObject]] toChannel:selectedChannel];
+        }
+    }];
 }
 
 - (void)postLinkToInputField:(id)sender {
@@ -20,94 +19,112 @@
 }
 
 - (void)giveOperatorStatusToUser:(id)sender {
-    IRCClient *u = [mainWindow() selectedClient];
-    IRCChannel *c = [mainWindow() selectedChannel];
-    PointerIsEmptyAssert(u);
-    for (IRCUser *m in [self selectedMembers:sender]) {
-        [[u invokeOnMainThread] sendCommand:[NSString stringWithFormat:@"CS OP %@ %@", [c name], m.nickname]];
-    }
-    [self deselectMembers:sender];
+    [self performBlockOnSelectedUsers:sender withBlock:^(IRCClient *selectedClient, IRCChannel *selectedChannel){
+        for (IRCUser *selectedUser in [self selectedMembers:sender]) {
+            [selectedClient sendCommand:[NSString stringWithFormat:@"CS OP %@ %@", [selectedChannel name], selectedUser.nickname]];
+        }
+    }];
 }
 
 - (void)giveVoiceStatusToUser:(id)sender {
-    IRCClient *u = [mainWindow() selectedClient];
-    IRCChannel *c = [mainWindow() selectedChannel];
-    PointerIsEmptyAssert(u);
-    for (IRCUser *m in [self selectedMembers:sender]) {
-        [[u invokeOnMainThread] sendCommand:[NSString stringWithFormat:@"CS VOICE %@ %@", [c name], m.nickname]];
-    }
-    [self deselectMembers:sender];
+    [self performBlockOnSelectedUsers:sender withBlock:^(IRCClient *selectedClient, IRCChannel *selectedChannel){
+        for (IRCUser *selectedUser in [self selectedMembers:sender]) {
+            [self performBlockOnMainThread:^{
+                [selectedClient sendCommand:[NSString stringWithFormat:@"CS VOICE %@ %@", [selectedChannel name], selectedUser.nickname]];
+            }];
+        }
+    }];
 }
 
 - (void)revokeOperatorStatusFromUser:(id)sender {
-    IRCClient *u = [mainWindow() selectedClient];
-    IRCChannel *c = [mainWindow() selectedChannel];
-    PointerIsEmptyAssert(u);
-    for (IRCUser *m in [self selectedMembers:sender]) {
-        [[u invokeOnMainThread] sendCommand:[NSString stringWithFormat:@"CS DEOP %@ %@", [c name], m.nickname]];
-    }
-    [self deselectMembers:sender];
+    [self performBlockOnSelectedUsers:sender withBlock:^(IRCClient *selectedClient, IRCChannel *selectedChannel){
+        for (IRCUser *selectedUser in [self selectedMembers:sender]) {
+            [selectedClient sendCommand:[NSString stringWithFormat:@"CS DEOP %@ %@", [selectedChannel name], selectedUser.nickname]];
+        }
+    }];
 }
 
 - (void)revokeVoiceStatusFromUser:(id)sender {
-    IRCClient *u = [mainWindow() selectedClient];
-    IRCChannel *c = [mainWindow() selectedChannel];
-    PointerIsEmptyAssert(u);
-    for (IRCUser *m in [self selectedMembers:sender]) {
-        [[u invokeOnMainThread] sendCommand:[NSString stringWithFormat:@"CS DEVOICE %@ %@", [c name], m.nickname]];
-    }
-    [self deselectMembers:sender];
+    [self performBlockOnSelectedUsers:sender withBlock:^(IRCClient *selectedClient, IRCChannel *selectedChannel){
+        for (IRCUser *selectedUser in [self selectedMembers:sender]) {
+            [selectedClient sendCommand:[NSString stringWithFormat:@"CS DEVOICE %@ %@", [selectedChannel name], selectedUser.nickname]];
+        }
+    }];
 }
 
 - (void)banUserFromChannel:(id)sender {
-    IRCClient *u = [mainWindow() selectedClient];
-    IRCChannel *c = [mainWindow() selectedChannel];
-    PointerIsEmptyAssert(u);
-    [u sendCommand:[NSString stringWithFormat:@"CS OP %@ %@", [c name], [u localNickname]]];
-    dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, 0.5 * NSEC_PER_SEC);
-    dispatch_after(popTime, dispatch_get_main_queue(), ^(void){
-        for (IRCUser *m in [self selectedMembers:sender]) {
-            [u sendCommand:[NSString stringWithFormat:@"%@ %@", IRCPublicCommandIndex("ban"), [m nickname]]
-                                 completeTarget:YES
-                                         target:[c name]];
+    [self performBlockOnSelectedUsersAsChannelOperator:sender withBlock:^(IRCClient *selectedClient, IRCChannel *selectedChannel){
+        for (IRCUser *selectedUser in [self selectedMembers:sender]) {
+            [selectedClient sendCommand:[NSString stringWithFormat:@"%@ %@", IRCPublicCommandIndex("ban"), [selectedUser nickname]]
+                         completeTarget:YES
+                                 target:[selectedChannel name]];
         }
-        [u sendCommand:[NSString stringWithFormat:@"CS DEOP %@ %@", [c name], [u localNickname]]];
-        [self deselectMembers:sender];
-    });
+    }];
+}
+
+- (void)unbanUserFromChannel:(id)sender {
+    [self performBlockOnSelectedUsersAsChannelOperator:sender withBlock:^(IRCClient *selectedClient, IRCChannel *selectedChannel){
+        for (IRCUser *selectedUser in [self selectedMembers:sender]) {
+            [selectedClient sendCommand:[NSString stringWithFormat:@"MODE %@ -b *!*%@", [selectedChannel name], [selectedUser hostmask]]];
+        }
+    }];
 }
 
 - (void)kickUserFromChannel:(id)sender {
-    IRCClient *u = [mainWindow() selectedClient];
-    IRCChannel *c = [mainWindow() selectedChannel];
-    PointerIsEmptyAssert(u);
-    [u sendCommand:[NSString stringWithFormat:@"CS OP %@ %@", [c name], [u localNickname]]];
-    dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, 0.5 * NSEC_PER_SEC);
-    dispatch_after(popTime, dispatch_get_main_queue(), ^(void){
-        for (IRCUser *m in [self selectedMembers:sender]) {
-            [u kick:c target:[m nickname]];
+    [self performBlockOnSelectedUsersAsChannelOperator:sender withBlock:^(IRCClient *selectedClient, IRCChannel *selectedChannel){
+        for (IRCUser *selectedUser in [self selectedMembers:sender]) {
+            [selectedClient kick:selectedChannel target:[selectedUser nickname]];
         }
-        [u sendCommand:[NSString stringWithFormat:@"CS DEOP %@ %@", [c name], [u localNickname]]];
-        [self deselectMembers:sender];
-    });
+    }];
 }
 
 - (void)kickBanUserFromChannel:(id)sender {
-    IRCClient *u = [mainWindow() selectedClient];
-    IRCChannel *c = [mainWindow() selectedChannel];
-    PointerIsEmptyAssert(u);
-    [u sendCommand:[NSString stringWithFormat:@"CS OP %@ %@", [c name], [u localNickname]]];
-    dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, 0.5 * NSEC_PER_SEC);
-    dispatch_after(popTime, dispatch_get_main_queue(), ^(void){
-        for (IRCUser *m in [self selectedMembers:sender]) {
-            [u sendCommand:[NSString stringWithFormat:@"%@ %@", IRCPublicCommandIndex("ban"), [m nickname]]
-                                 completeTarget:YES
-                                         target:[c name]];
+    [self performBlockOnSelectedUsersAsChannelOperator:sender withBlock:^(IRCClient *selectedClient, IRCChannel *selectedChannel){
+        for (IRCUser *selectedUser in [self selectedMembers:sender]) {
+            [selectedClient sendCommand:[NSString stringWithFormat:@"%@ %@", IRCPublicCommandIndex("ban"), [selectedUser nickname]]
+            completeTarget:YES
+                    target:[selectedChannel name]];
             
-            [u kick:c target:[m nickname]];
+            [selectedClient kick:selectedChannel target:[selectedUser nickname]];
         }
-        [u sendCommand:[NSString stringWithFormat:@"CS DEOP %@ %@", [c name], [u localNickname]]];
-        [self deselectMembers:sender];
-    });
+    }];
+}
+
+- (void)muteUserOnChannel:(id)sender {
+    [self performBlockOnSelectedUsersAsChannelOperator:sender withBlock:^(IRCClient *selectedClient, IRCChannel *selectedChannel){
+        for (IRCUser *selectedUser in [self selectedMembers:sender]) {
+            [selectedClient sendCommand:[NSString stringWithFormat:@"MODE %@ +q *!*%@", [selectedChannel name], [selectedUser hostmask]]];
+        }
+    }];
+}
+
+- (void)unmuteUserOnChannel:(id)sender {
+    [self performBlockOnSelectedUsersAsChannelOperator:sender withBlock:^(IRCClient *selectedClient, IRCChannel *selectedChannel){
+        for (IRCUser *selectedUser in [self selectedMembers:sender]) {
+            [selectedClient sendCommand:[NSString stringWithFormat:@"MODE %@ -q *!*%@", [selectedChannel name], [selectedUser hostmask]]];
+        }
+    }];
+}
+
+- (void)performBlockOnSelectedUsers:(id)sender withBlock:(void (^)(IRCClient *, IRCChannel *))block {
+    IRCClient *selectedClient = [mainWindow() selectedClient];
+    IRCChannel *selectedChannel = [mainWindow() selectedChannel];
+    PointerIsEmptyAssert(selectedClient);
+    [self performBlockOnMainThread:^{
+        block(selectedClient, selectedChannel);
+    }];
+    [self deselectMembers:sender];
+}
+
+- (void)performBlockOnSelectedUsersAsChannelOperator:(id)sender withBlock:(void (^)(IRCClient *, IRCChannel *))block {
+    [self performBlockOnSelectedUsers:sender withBlock:^(IRCClient *selectedClient, IRCChannel *selectedChannel){
+        [selectedClient sendCommand:[NSString stringWithFormat:@"CS OP %@ %@", [selectedChannel name], [selectedClient localNickname]]];
+        dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, 0.5 * NSEC_PER_SEC);
+        dispatch_after(popTime, dispatch_get_main_queue(), ^(void){
+            block(selectedClient, selectedChannel);
+            [selectedClient sendCommand:[NSString stringWithFormat:@"CS DEOP %@ %@", [selectedChannel name], [selectedClient localNickname]]];
+        });
+    }];
 }
 
 - (BOOL)validateMenuItem:(NSMenuItem *)item {
