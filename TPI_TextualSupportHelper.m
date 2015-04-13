@@ -46,4 +46,43 @@
     return NO;
 }
 
++ (NSArray *)listOfBansMatchingBanlist:(NSArray *)banList withUser:(IRCUser *)user {
+    NSMutableArray *matchingBans = [[NSMutableArray alloc] init];
+    NSLog(@"banlist: %@", banList);
+    for (NSString *banMask in banList) {
+        NSString *mutableBanMask = [banMask copy];
+        if ([mutableBanMask hasPrefix:@"$"]) {
+            NSRange endOfFlag = [mutableBanMask rangeOfString:@":"];
+            mutableBanMask = [mutableBanMask substringWithRange:NSMakeRange(endOfFlag.location + 1, (mutableBanMask.length - (endOfFlag.location + 1)))];
+        }
+        
+        NSLog(@"mask: %@", mutableBanMask);
+        NSRange locationOfExtBan = [mutableBanMask rangeOfString:@"$"];
+        if (locationOfExtBan.location != NSNotFound) {
+            mutableBanMask = [mutableBanMask substringToIndex:locationOfExtBan.location];
+        }
+        
+        if ([mutableBanMask length] == 0) continue;
+        NSLog(@"host before regex: %@", mutableBanMask);
+        NSString *regexHostmask = mutableBanMask;
+        
+        regexHostmask = [regexHostmask stringByReplacingOccurrencesOfString:@"?" withString:@"(.?)"];
+        regexHostmask = [regexHostmask stringByReplacingOccurrencesOfString:@"*" withString:@"(.*?)"];
+        regexHostmask = [NSString stringWithFormat:@"^%@$", regexHostmask];
+        
+        NSLog(@"Host after regex: %@", regexHostmask);
+        
+        NSRegularExpression *regex = [NSRegularExpression regularExpressionWithPattern:regexHostmask
+                                                                               options:0
+                                                                                 error:nil];
+        
+        NSUInteger numberOfMatches = [regex numberOfMatchesInString:[user hostmask] options:0 range:NSMakeRange(0, [[user hostmask] length])];
+        if (numberOfMatches > 0) {
+            [matchingBans addObject:banMask];
+        }
+    }
+    
+    return matchingBans;
+}
+
 @end

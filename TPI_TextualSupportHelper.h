@@ -19,6 +19,6 @@
                   message:(NSString *)message;
 
 + (BOOL)userIsChannelRegular:(NSString *)nickname client:(IRCClient *)client channel:(IRCChannel *)channel;
-
++ (NSArray *)listOfBansMatchingBanlist:(NSArray *)banList withUser:(IRCUser *)user;
 
 @end
