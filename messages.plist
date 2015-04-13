@@ -63,6 +63,12 @@
 		</dict>
 		<dict>
 			<key>Name</key>
+			<string>OTR Query Issue</string>
+			<key>Message</key>
+			<string>this is caused by OTR encrypted messaging being enabled in Textual, you can disable it by following these steps https://www.codeux.com/textual/help/Off-the-Record-Messaging.kb#faq-entry-10</string>
+		</dict>
+		<dict>
+			<key>Name</key>
 			<string>seperator</string>
 		</dict>
 		<dict>
