@@ -69,6 +69,12 @@
 		</dict>
 		<dict>
 			<key>Name</key>
+			<string>New Default Proxy</string>
+			<key>Message</key>
+			<string>to mimic the behavior of other applications, such as Safari, Textual automatically uses the SOCKS proxy configured in the Network section of System Preferences when enabled. This behavior can be changed under the “Proxy Server” section of Server Properties.</string>
+		</dict>
+		<dict>
+			<key>Name</key>
 			<string>seperator</string>
 		</dict>
 		<dict>
