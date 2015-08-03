@@ -86,15 +86,15 @@ static NSMutableDictionary *muteList;
 }
 
 - (void)overrideExistingMenuItems {
-    [[userlistMenu itemWithTag:504910] setAction:@selector(giveOperatorStatusToUser:)];
-    [[userlistMenu itemWithTag:504912] setAction:@selector(giveVoiceStatusToUser:)];
+    [[userlistMenu itemWithTag:1503] setAction:@selector(giveOperatorStatusToUser:)];
+    [[userlistMenu itemWithTag:1505] setAction:@selector(giveVoiceStatusToUser:)];
     
-    [[userlistMenu itemWithTag:504810] setAction:@selector(revokeOperatorStatusFromUser:)];
-    [[userlistMenu itemWithTag:504812] setAction:@selector(revokeVoiceStatusFromUser:)];
+    [[userlistMenu itemWithTag:1507] setAction:@selector(revokeOperatorStatusFromUser:)];
+    [[userlistMenu itemWithTag:1509] setAction:@selector(revokeVoiceStatusFromUser:)];
     
-    [[userlistMenu itemWithTitle:@"Ban"] setAction:@selector(banUserFromChannel:)];
-    [[userlistMenu itemWithTitle:@"Kick"] setAction:@selector(kickUserFromChannel:)];
-    [[userlistMenu itemWithTitle:@"Ban and Kick"] setAction:@selector(kickBanUserFromChannel:)];
+    [[userlistMenu itemWithTag:1511] setAction:@selector(banUserFromChannel:)];
+    [[userlistMenu itemWithTag:1512] setAction:@selector(kickUserFromChannel:)];
+    [[userlistMenu itemWithTag:1513] setAction:@selector(kickBanUserFromChannel:)];
 }
 
 - (void)didReceiveServerInputOnClient:(IRCClient *)client
