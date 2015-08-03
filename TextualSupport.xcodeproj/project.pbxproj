@@ -185,10 +185,10 @@
 		1DEB911B08733D790010E9CD /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				BUNDLE_LOADER = "/Applications/Textual 5.app/Contents/MacOS/Textual 5";
+				BUNDLE_LOADER = /Applications/Textual.app/Contents/MacOS/Textual;
 				COMBINE_HIDPI_IMAGES = YES;
-				FRAMEWORK_SEARCH_PATHS = "\"/Applications/Textual 5.app/Contents/Frameworks\"/**";
-				HEADER_SEARCH_PATHS = "\"/Applications/Textual 5.app/Contents/Headers\"/**";
+				FRAMEWORK_SEARCH_PATHS = "\"/Applications/Textual.app/Contents/Frameworks\"/**";
+				HEADER_SEARCH_PATHS = "\"/Applications/Textual.app/Contents/Headers\"/**";
 				PRODUCT_NAME = TextualSupport;
 			};
 			name = Debug;
@@ -196,10 +196,10 @@
 		1DEB911C08733D790010E9CD /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				BUNDLE_LOADER = "/Applications/Textual 5.app/Contents/MacOS/Textual 5";
+				BUNDLE_LOADER = /Applications/Textual.app/Contents/MacOS/Textual;
 				COMBINE_HIDPI_IMAGES = YES;
-				FRAMEWORK_SEARCH_PATHS = "\"/Applications/Textual 5.app/Contents/Frameworks\"/**";
-				HEADER_SEARCH_PATHS = "\"/Applications/Textual 5.app/Contents/Headers\"/**";
+				FRAMEWORK_SEARCH_PATHS = "\"/Applications/Textual.app/Contents/Frameworks\"/**";
+				HEADER_SEARCH_PATHS = "\"/Applications/Textual.app/Contents/Headers\"/**";
 				PRODUCT_NAME = TextualSupport;
 			};
 			name = Release;
