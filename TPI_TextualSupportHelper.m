@@ -16,10 +16,11 @@
                        selector:(SEL)selector {
     
     for (NSString *menuItemName in menuItems) {
-        if ([menuItems[menuItemName] isEqualToString: @"seperator"]) {
-            [menu addItem:[NSMenuItem separatorItem]];
-        }
-        else {
+        if ([menuItems[menuItemName] isKindOfClass:[NSString class]]) {
+            if ([menuItems[menuItemName] isEqualToString: @"seperator"]) {
+                [menu addItem:[NSMenuItem separatorItem]];
+            }
+        } else {
             [self addMenuItemTitled:menuItemName withSelector:selector toMenu:menu message:menuItems[menuItemName][@"Message"]];
         }
     }
