@@ -120,7 +120,7 @@
 		089C1669FE841209C02AAC07 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0600;
+				LastUpgradeCheck = 0700;
 			};
 			buildConfigurationList = 1DEB911E08733D790010E9CD /* Build configuration list for PBXProject "TextualSupport" */;
 			compatibilityVersion = "Xcode 3.2";
@@ -189,6 +189,7 @@
 				COMBINE_HIDPI_IMAGES = YES;
 				FRAMEWORK_SEARCH_PATHS = "\"/Applications/Textual.app/Contents/Frameworks\"/**";
 				HEADER_SEARCH_PATHS = "\"/Applications/Textual.app/Contents/Headers\"/**";
+				PRODUCT_BUNDLE_IDENTIFIER = com.codeux.irc.textual.extension.TextualSupport;
 				PRODUCT_NAME = TextualSupport;
 			};
 			name = Debug;
@@ -200,6 +201,7 @@
 				COMBINE_HIDPI_IMAGES = YES;
 				FRAMEWORK_SEARCH_PATHS = "\"/Applications/Textual.app/Contents/Frameworks\"/**";
 				HEADER_SEARCH_PATHS = "\"/Applications/Textual.app/Contents/Headers\"/**";
+				PRODUCT_BUNDLE_IDENTIFIER = com.codeux.irc.textual.extension.TextualSupport;
 				PRODUCT_NAME = TextualSupport;
 			};
 			name = Release;
@@ -218,8 +220,10 @@
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
 				FRAMEWORK_SEARCH_PATHS = "/Applications/Textual.app/Contents/Frameworks/**";
 				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_OPTIMIZATION_LEVEL = 0;
 				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
@@ -255,6 +259,7 @@
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				FRAMEWORK_SEARCH_PATHS = "/Applications/Textual.app/Contents/Frameworks/**";
 				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
