@@ -95,15 +95,7 @@
 			<string>see this link for information on how to create and edit styles for Textual: http://www.codeux.com/textual/help/Styles.kb</string>
 		</dict>
 		<key>New item - 14</key>
-		<dict>
-			<key>Name</key>
-			<string>seperator</string>
-		</dict>
-		<key>3rd Party Addons</key>
-		<dict>
-			<key>Message</key>
-			<string>see this link for a list of some of the 3rd party plug-ins, scripts, and styles for Textual: http://is.gd/AL8mcU</string>
-		</dict>
+		<string></string>
 		<key>Command Reference</key>
 		<dict>
 			<key>Message</key>
