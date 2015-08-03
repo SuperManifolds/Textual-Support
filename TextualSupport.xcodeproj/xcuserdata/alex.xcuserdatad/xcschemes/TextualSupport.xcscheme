@@ -10,7 +10,7 @@
             ActionType = "Xcode.IDEStandardExecutionActionsCore.ExecutionActionType.ShellScriptAction">
             <ActionContent
                title = "Run Script"
-               scriptText = "killall &quot;Textual&quot;&#10;rm -rf &quot;/Users/alex/Library/Group Containers/8482Q6EPL6.com.codeux.apps.textual/Library/Application Support/Textual/Extensions/TextualSupport.bundle&quot;&#10;cp -R &quot;$SRCROOT/build/Debug/TextualSupport.bundle&quot; &quot;/Users/alex/Library/Group Containers/8482Q6EPL6.com.codeux.apps.textual/Library/Application Support/Textual/Extensions/TextualSupport.bundle&quot;&#10;open &quot;/Applications/Textual.app&quot;">
+               scriptText = "killall &quot;Textual&quot;&#10;rm -rf &quot;/Users/alex/Library/Group Containers/com.codeux.apps.textual/Library/Application Support/Textual/Extensions/TextualSupport.bundle&quot;&#10;cp -R &quot;$SRCROOT/build/Debug/TextualSupport.bundle&quot; &quot;/Users/alex/Library/Group Containers/com.codeux.apps.textual/Library/Application Support/Textual/Extensions/TextualSupport.bundle&quot;&#10;open &quot;/Applications/Textual.app&quot;">
                <EnvironmentBuildable>
                   <BuildableReference
                      BuildableIdentifier = "primary"
