@@ -41,8 +41,8 @@ static NSMutableDictionary *muteList;
 	[textualSupportMenuItems setKeyEquivalent:@""];
     NSMenu *textualSupportMenu = [NSMenu new];
 	[textualSupportMenu setTitle:@"Textual Support"];
-    NSArray *supportMessages = dict[@"userlist"];
-    [TPI_TextualSupportHelper addItemsFromArrayToMenu:textualSupportMenu menuItems:supportMessages selector:@selector(postMenuMessage:)];
+    NSDictionary *supportMessages = dict[@"userlist"];
+    [TPI_TextualSupportHelper addItemsFromDictionaryToMenu:textualSupportMenu menuItems:supportMessages selector:@selector(postMenuMessage:)];
     [textualSupportMenuItems setSubmenu: textualSupportMenu];
 	[userlistMenu addItem:[textualSupportMenuItems copy]];
     
@@ -51,8 +51,8 @@ static NSMutableDictionary *muteList;
     [textualInsertLinksMenuItems setKeyEquivalent:@""];
     NSMenu *textualInsertLinksMenu = [NSMenu new];
     [textualInsertLinksMenuItems setTitle:@"Insert Support Link"];
-    NSArray *insertLinkMessages = dict[@"insertlink"];
-    [TPI_TextualSupportHelper addItemsFromArrayToMenu:textualInsertLinksMenu menuItems:insertLinkMessages selector:@selector(postLinkToInputField:)];
+    NSDictionary *insertLinkMessages = dict[@"insertlink"];
+    [TPI_TextualSupportHelper addItemsFromDictionaryToMenu:textualInsertLinksMenu menuItems:insertLinkMessages selector:@selector(postLinkToInputField:)];
     [textualInsertLinksMenuItems setSubmenu:textualInsertLinksMenu];
     [inputFieldMenu addItem:[textualInsertLinksMenuItems copy]];
     

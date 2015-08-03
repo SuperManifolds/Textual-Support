@@ -3,148 +3,124 @@
 <plist version="1.0">
 <dict>
 	<key>insertlink</key>
-	<array>
+	<dict>
+		<key>FAQ</key>
 		<dict>
-			<key>Name</key>
-			<string>FAQ</string>
 			<key>Message</key>
 			<string>http://www.codeux.com/textual/help/Frequently-Asked-Questions.kb</string>
 		</dict>
+		<key>Current Preview Link</key>
 		<dict>
-			<key>Name</key>
-			<string>Current Preview Link</string>
 			<key>Message</key>
 			<string>https://rink.hockeyapp.net/apps/93d6d315ace023a30793e8c52a02f920</string>
 		</dict>
+		<key>Newsletter</key>
 		<dict>
-			<key>Name</key>
-			<string>Newsletter</string>
 			<key>Message</key>
 			<string>http://t.co/fEMllsk</string>
 		</dict>
+		<key>Migrate Preferences</key>
 		<dict>
-			<key>Name</key>
-			<string>Migrate Preferences</string>
 			<key>Message</key>
 			<string>http://www.codeux.com/textual/help/Migrating-Preferences.kb</string>
 		</dict>
+		<key>New item - 5</key>
 		<dict>
-			<key>Name</key>
-			<string>Migrate Preferences (v4 - v5)</string>
 			<key>Message</key>
 			<string>http://www.codeux.com/textual/downloads/migrationAssistant.download</string>
 		</dict>
-	</array>
+	</dict>
 	<key>userlist</key>
-	<array>
+	<dict>
+		<key>FAQ</key>
 		<dict>
-			<key>Name</key>
-			<string>FAQ</string>
 			<key>Message</key>
 			<string>please refer to our frequently asked questions (FAQ) by following this link: http://www.codeux.com/textual/help/Frequently-Asked-Questions.kb</string>
 		</dict>
+		<key>Textual Timeout</key>
 		<dict>
-			<key>Name</key>
-			<string>Textual Timeout</string>
 			<key>Message</key>
 			<string>if you keep receiving disconnects due to a timeout in Textual, then chances are good that there is an intermediate connection issue between you and the IRC network being connected to. For more information see: http://is.gd/xKPIdV</string>
 		</dict>
+		<key>SASL</key>
 		<dict>
-			<key>Name</key>
-			<string>SASL</string>
 			<key>Message</key>
 			<string>Textual automatically attempts SASL PLAIN authentication on servers that support it. See this link for more information: http://is.gd/7LY1GH</string>
 		</dict>
+		<key>Yosemite</key>
 		<dict>
-			<key>Name</key>
-			<string>Yosemite</string>
 			<key>Message</key>
 			<string>Textual 4 does not support OS X Yosemite. You will need to buy Textual 5 available here: http://www.codeux.com/textual/  For questions regarding the upgrade see this link: http://is.gd/QLNYoP</string>
 		</dict>
+		<key>OTR Query Issue</key>
 		<dict>
-			<key>Name</key>
-			<string>OTR Query Issue</string>
 			<key>Message</key>
 			<string>this is caused by OTR encrypted messaging being enabled in Textual, you can disable it by following these steps https://www.codeux.com/textual/help/Off-the-Record-Messaging.kb#faq-entry-10</string>
 		</dict>
+		<key>New Default Proxy</key>
 		<dict>
-			<key>Name</key>
-			<string>New Default Proxy</string>
 			<key>Message</key>
 			<string>to mimic the behavior of other applications, such as Safari, Textual automatically uses the SOCKS proxy configured in the Network section of System Preferences when enabled. This behavior can be changed under the “Proxy Server” section of Server Properties.</string>
 		</dict>
+		<key>seperator1</key>
+		<string>seperator</string>
+		<key>Migrate Preferences</key>
 		<dict>
-			<key>Name</key>
-			<string>seperator</string>
-		</dict>
-		<dict>
-			<key>Name</key>
-			<string>Migrate Preferences</string>
 			<key>Message</key>
 			<string>see this link to learn how to import and export your Textual preferences: http://is.gd/hUp15p</string>
 		</dict>
+		<key>Migrate Preferences (4 to 5)</key>
 		<dict>
-			<key>Name</key>
-			<string>Migrate Preferences (4 to 5)</string>
 			<key>Message</key>
 			<string>Textual 5 is a seperate application from Textual 4 and cannot read your old preferences, however If you are running Textual 4.1.8, then migration of preferences has already happened on your behalf. Otherwise you may download our Migration Assistant from this location: http://is.gd/BdkjdC. If you wish to log to text file you need to set the directory again as this setting is not possible to migrate.</string>
 		</dict>
+		<key>Customise Shortcuts</key>
 		<dict>
-			<key>Name</key>
-			<string>Customise Shortcuts</string>
 			<key>Message</key>
 			<string>see this link to learn how to add a new, or override an existing keyboard shortcut in Textual: http://is.gd/jhKlVY</string>
 		</dict>
+		<key>Writing Plugins</key>
 		<dict>
-			<key>Name</key>
-			<string>Writing Plugins</string>
 			<key>Message</key>
 			<string>see this link for information on how to write Objective-C or Swift plug-ins for Textual: http://www.codeux.com/textual/help/Writing-Plugins.kb</string>
 		</dict>
+		<key>Writing Scripts</key>
 		<dict>
-			<key>Name</key>
-			<string>Writing Scripts</string>
 			<key>Message</key>
 			<string>see this link for information on how to write scripts for Textual: http://www.codeux.com/textual/help/Writing-Scripts.kb</string>
 		</dict>
+		<key>Creating Styles</key>
 		<dict>
-			<key>Name</key>
-			<string>Creating Styles</string>
 			<key>Message</key>
 			<string>see this link for information on how to create and edit styles for Textual: http://www.codeux.com/textual/help/Styles.kb</string>
 		</dict>
+		<key>New item - 14</key>
 		<dict>
 			<key>Name</key>
 			<string>seperator</string>
 		</dict>
+		<key>3rd Party Addons</key>
 		<dict>
-			<key>Name</key>
-			<string>3rd Party Addons</string>
 			<key>Message</key>
 			<string>see this link for a list of some of the 3rd party plug-ins, scripts, and styles for Textual: http://is.gd/AL8mcU</string>
 		</dict>
+		<key>Command Reference</key>
 		<dict>
-			<key>Name</key>
-			<string>Command Reference</string>
 			<key>Message</key>
 			<string>here is a list of commands that are built into the Textual IRC Client: http://is.gd/aLLdvC</string>
 		</dict>
+		<key>Keyboard Shortcuts</key>
 		<dict>
-			<key>Name</key>
-			<string>Keyboard Shortcuts</string>
 			<key>Message</key>
 			<string>here is a list of keyboard shortcuts that are built into the Textual IRC Client: http://is.gd/jhKlVY</string>
 		</dict>
+		<key>seperator2</key>
+		<string>seperator</string>
+		<key>Newsletter</key>
 		<dict>
-			<key>Name</key>
-			<string>seperator</string>
-		</dict>
-		<dict>
-			<key>Name</key>
-			<string>Newsletter</string>
 			<key>Message</key>
 			<string>you can sign up to the Textual newsletter to get pre-release copies of Textual at http://is.gd/urItDO</string>
 		</dict>
-	</array>
+	</dict>
 </dict>
 </plist>

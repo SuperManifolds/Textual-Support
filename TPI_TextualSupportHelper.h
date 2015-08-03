@@ -11,7 +11,7 @@
 #import "TextualApplication.h"
 
 @interface TPI_TextualSupportHelper : NSObject
-+ (void)addItemsFromArrayToMenu:(NSMenu *)menu menuItems:(NSArray *)menuItems selector:(SEL)selector;
++ (void)addItemsFromDictionaryToMenu:(NSMenu *)menu menuItems:(NSDictionary *)menuItems selector:(SEL)selector;
 
 + (void)addMenuItemTitled:(NSString *)title
              withSelector:(SEL)anAction
