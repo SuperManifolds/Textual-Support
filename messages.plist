@@ -32,6 +32,11 @@
 	</dict>
 	<key>userlist</key>
 	<dict>
+		<key>Migration out of App Store</key>
+		<dict>
+			<key>Message</key>
+			<string>Textual will continue to exist and receive regular updates in the App Store, however should you want to migrate you can request a free license key by following these instructions: http://is.gd/YlirgH</string>
+		</dict>
 		<key>FAQ</key>
 		<dict>
 			<key>Message</key>
@@ -89,8 +94,6 @@
 			<key>Message</key>
 			<string>see this link for information on how to create and edit styles for Textual: http://www.codeux.com/textual/help/Styles.kb</string>
 		</dict>
-		<key>New item - 14</key>
-		<string></string>
 		<key>Command Reference</key>
 		<dict>
 			<key>Message</key>
