@@ -69,11 +69,6 @@
 			<key>Message</key>
 			<string>see this link to learn how to import and export your Textual preferences: http://is.gd/hUp15p</string>
 		</dict>
-		<key>Migrate Preferences (4 to 5)</key>
-		<dict>
-			<key>Message</key>
-			<string>Textual 5 is a seperate application from Textual 4 and cannot read your old preferences, however If you are running Textual 4.1.8, then migration of preferences has already happened on your behalf. Otherwise you may download our Migration Assistant from this location: http://is.gd/BdkjdC. If you wish to log to text file you need to set the directory again as this setting is not possible to migrate.</string>
-		</dict>
 		<key>Customise Shortcuts</key>
 		<dict>
 			<key>Message</key>
