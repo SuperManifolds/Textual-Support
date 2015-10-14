@@ -86,22 +86,17 @@ static NSMutableDictionary *muteList;
     [[userlistMenu itemWithTag:1513] setAction:@selector(kickBanUserFromChannel:)];
 }
 
-- (void)didReceiveServerInputOnClient:(IRCClient *)client
-                    senderInformation:(NSDictionary *)senderDict
-                   messageInformation:(NSDictionary *)messageDict {
-    
-    NSString *command = [messageDict objectForKey:THOPluginProtocolDidReceiveServerInputMessageCommandAttribute];
+- (void)didReceiveServerInput:(THOPluginDidReceiveServerInputConcreteObject *)inputObject onClient:(IRCClient *)client {
+    NSString *command = [inputObject messageCommand];
     
     if ([command isEqualToString:@"004"]) {
-        NSString *serverSoftware = [messageDict objectForKey:THOPluginProtocolDidReceiveServerInputMessageSequenceAttribute];
+        NSString *serverSoftware = [inputObject messageSequence];
         [serverSoftwareList setObject:serverSoftware forKey:[client uniqueIdentifier]];
     }
     
     else if ([command isEqualToString:@"JOIN"]) {
-        NSString *sender = [senderDict objectForKey:THOPluginProtocolDidReceiveServerInputSenderNicknameAttribute];
-        NSString *channel = [messageDict objectForKey:THOPluginProtocolDidReceiveServerInputMessageParamatersAttribute][0];
-        
-        if ([sender isEqualIgnoringCase:[client localNickname]] == NO) return;
+        NSString *channel = [inputObject messageParamaters][0];
+        if ([inputObject.senderNickname isEqualIgnoringCase:[client localNickname]] == NO) return;
         
         if ([banList objectForKey:[client uniqueIdentifier]] == nil) {
             [banList setObject:[[NSMutableDictionary alloc] init] forKey:[client uniqueIdentifier]];
@@ -116,8 +111,7 @@ static NSMutableDictionary *muteList;
             [client sendCommand:[NSString stringWithFormat:@"MODE %@ +q", channel]];
         }
     } else if ([command isEqualToString:@"367"]) {
-        NSArray *parameters = [messageDict objectForKey:THOPluginProtocolDidReceiveServerInputMessageParamatersAttribute];
-        NSString *channel = parameters[1];
+        NSString *channel = inputObject.messageParamaters[1];
         NSMutableDictionary *banChannels = [banList objectForKey:[client uniqueIdentifier]];
         
         if (isReceivingBanMessages == NO) {
@@ -126,14 +120,13 @@ static NSMutableDictionary *muteList;
         }
         
         NSMutableArray *bans = [banChannels objectForKey:channel];
-        [bans addObject:parameters[2]];
+        [bans addObject:inputObject.messageParamaters[2]];
         [banChannels setObject:bans forKey:channel];
         [banList setObject:banChannels forKey:[client uniqueIdentifier]];
     } else if ([command isEqualToString:@"368"]) {
         isReceivingBanMessages = NO;
     } else if ([command isEqualToString:@"728"]) {
-        NSArray *parameters = [messageDict objectForKey:THOPluginProtocolDidReceiveServerInputMessageParamatersAttribute];
-        NSString *channel = parameters[1];
+        NSString *channel = inputObject.messageParamaters[1];
         NSMutableDictionary *muteChannels = [muteList objectForKey:[client uniqueIdentifier]];
         
         if (isReceivingMuteMessages == NO) {
@@ -142,13 +135,14 @@ static NSMutableDictionary *muteList;
         }
         
         NSMutableArray *mutes = [muteChannels objectForKey:channel];
-        [mutes addObject:parameters[2]];
+        [mutes addObject:inputObject.messageParamaters[2]];
         [muteChannels setObject:mutes forKey:channel];
         
         [muteList setObject:muteChannels forKey:[client uniqueIdentifier]];
     } else if ([command isEqualToString:@"729"]) {
         isReceivingMuteMessages = NO;
     }
+
 }
 
 - (BOOL)serverSupportsMute:(IRCClient *)client {
