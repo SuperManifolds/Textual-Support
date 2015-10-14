@@ -69,6 +69,7 @@ static NSMutableDictionary *muteList;
     [textualUnmuteUserMenuItem setKeyEquivalent:@""];
     [textualUnmuteUserMenuItem setTarget:menuController()];
     [textualUnmuteUserMenuItem setAction:@selector(unmuteUserOnChannel:)];
+    [textualUnmuteUserMenuItem setTag:424203];
     [userlistMenu insertItem:textualUnmuteUserMenuItem atIndex:(indexOfBanItem + 3)];
     
     menuController().userControlMenu = userlistMenu;

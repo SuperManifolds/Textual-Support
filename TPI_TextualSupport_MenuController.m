@@ -163,6 +163,23 @@
             return [[TPI_TextualSupportHelper listOfBansMatchingBanlist:banList withUser:realUser] count] > 0;
         }
     }
+    
+    if (menuItemTag == 424202) {
+        for (IRCUser *selectedUser in [self selectedMembers:item]) {
+            IRCUser *realUser = [selectedChannel findMember:[selectedUser nickname]];
+            NSArray *muteList = [TPI_TextualSupport muteListForChannel:[selectedChannel name] onClient:selectedClient];
+            return [[TPI_TextualSupportHelper listOfBansMatchingBanlist:muteList withUser:realUser] count] == 0;
+        }
+    }
+    
+    if (menuItemTag == 424203) {
+        for (IRCUser *selectedUser in [self selectedMembers:item]) {
+            IRCUser *realUser = [selectedChannel findMember:[selectedUser nickname]];
+            NSArray *muteList = [TPI_TextualSupport muteListForChannel:[selectedChannel name] onClient:selectedClient];
+            return [[TPI_TextualSupportHelper listOfBansMatchingBanlist:muteList withUser:realUser] count] > 0;
+        }
+    }
+    
     return [menuController() validateMenuItemTag:menuItemTag forItem:item];
 }
 
