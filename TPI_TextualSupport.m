@@ -45,16 +45,6 @@ static NSMutableDictionary *muteList;
     [textualSupportMenuItems setSubmenu: textualSupportMenu];
 	[userlistMenu addItem:[textualSupportMenuItems copy]];
     
-    NSMenuItem *textualInsertLinksMenuItems = [[NSMenuItem alloc] init];
-    [textualInsertLinksMenuItems setTitle:@"Insert Support Link"];
-    [textualInsertLinksMenuItems setKeyEquivalent:@""];
-    NSMenu *textualInsertLinksMenu = [NSMenu new];
-    [textualInsertLinksMenuItems setTitle:@"Insert Support Link"];
-    NSDictionary *insertLinkMessages = dict[@"insertlink"];
-    [TPI_TextualSupportHelper addItemsFromDictionaryToMenu:textualInsertLinksMenu menuItems:insertLinkMessages selector:@selector(postLinkToInputField:)];
-    [textualInsertLinksMenuItems setSubmenu:textualInsertLinksMenu];
-    [inputFieldMenu addItem:[textualInsertLinksMenuItems copy]];
-    
     NSInteger indexOfBanItem = [userlistMenu indexOfItemWithTitle:@"Ban"];
     
     NSMenuItem *textualUnbanUserMenuItem = [[NSMenuItem alloc] init];
