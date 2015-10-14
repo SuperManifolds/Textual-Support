@@ -51,7 +51,7 @@ static NSMutableDictionary *muteList;
     [textualUnbanUserMenuItem setTitle:@"Unban"];
     [textualUnbanUserMenuItem setKeyEquivalent:@""];
     [textualUnbanUserMenuItem setTarget:menuController()];
-    [textualUnbanUserMenuItem setAction:@selector(unmuteUserOnChannel:)];
+    [textualUnbanUserMenuItem setAction:@selector(unbanUserFromChannel:)];
     [textualUnbanUserMenuItem setTag:424201];
     [userlistMenu insertItem:textualUnbanUserMenuItem atIndex:(indexOfBanItem + 1)];
     
