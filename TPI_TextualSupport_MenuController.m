@@ -64,7 +64,12 @@
 - (void)unbanUserFromChannel:(id)sender {
     [self performBlockOnSelectedUsersAsChannelOperator:sender withBlock:^(IRCClient *selectedClient, IRCChannel *selectedChannel, NSArray *selectedUsers){
         for (IRCUser *selectedUser in selectedUsers) {
-            [selectedClient sendCommand:[NSString stringWithFormat:@"MODE %@ -b *!*%@", [selectedChannel name], [selectedUser hostmask]]];
+            IRCUser *realUser = [selectedChannel findMember:[selectedUser nickname]];
+            NSArray *banList = [TPI_TextualSupport banListForChannel:[selectedChannel name] onClient:selectedClient];
+            NSArray *matchingBans = [TPI_TextualSupportHelper listOfBansMatchingBanlist:banList withUser:realUser];
+            for (NSString *ban in matchingBans) {
+                [selectedClient sendCommand:[NSString stringWithFormat:@"MODE %@ -b %@", [selectedChannel name], ban]];
+            }
         }
     }];
 }
@@ -93,7 +98,6 @@
     [self performBlockOnSelectedUsersAsChannelOperator:sender withBlock:^(IRCClient *selectedClient, IRCChannel *selectedChannel, NSArray *selectedUsers){
         for (IRCUser *selectedUser in selectedUsers) {
             IRCUser *realUser = [selectedChannel findMember:[selectedUser nickname]];
-            NSLog(@"address: %@", [realUser address]);
             [selectedClient sendCommand:[NSString stringWithFormat:@"MODE %@ +q *!*@%@", [selectedChannel name], [realUser address]]];
         }
     }];
@@ -104,8 +108,10 @@
         for (IRCUser *selectedUser in selectedUsers) {
             IRCUser *realUser = [selectedChannel findMember:[selectedUser nickname]];
             NSArray *muteList = [TPI_TextualSupport muteListForChannel:[selectedChannel name] onClient:selectedClient];
-            NSLog(@"matching: %@", [TPI_TextualSupportHelper listOfBansMatchingBanlist:muteList withUser:realUser]);
-            [selectedClient sendCommand:[NSString stringWithFormat:@"MODE %@ -q *!*@%@", [selectedChannel name], [realUser address]]];
+            NSArray *matchingMutes = [TPI_TextualSupportHelper listOfBansMatchingBanlist:muteList withUser:realUser];
+            for (NSString *mute in matchingMutes) {
+                [selectedClient sendCommand:[NSString stringWithFormat:@"MODE %@ -q %@", [selectedChannel name], mute]];
+            }
         }
     }];
 }

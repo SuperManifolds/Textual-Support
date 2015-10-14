@@ -162,7 +162,7 @@ static NSMutableDictionary *muteList;
         }
         
         NSMutableArray *mutes = [muteChannels objectForKey:channel];
-        [mutes addObject:inputObject.messageParamaters[2]];
+        [mutes addObject:inputObject.messageParamaters[3]];
         [muteChannels setObject:mutes forKey:channel];
         
         [muteList setObject:muteChannels forKey:[client uniqueIdentifier]];
