@@ -121,11 +121,18 @@
 
 - (void)performBlockOnSelectedUsersAsChannelOperator:(id)sender withBlock:(void (^)(IRCClient *, IRCChannel *, NSArray *))block {
     [self performBlockOnSelectedUsers:sender withBlock:^(IRCClient *selectedClient, IRCChannel *selectedChannel, NSArray *selectedUsers){
-        [selectedClient sendCommand:[NSString stringWithFormat:@"CS OP %@ %@", [selectedChannel name], [selectedClient localNickname]]];
+        IRCUser *localUser = [selectedChannel findMember:[selectedClient localNickname]];
+        BOOL userHasExistingPrivilegies = [localUser isOp];
+        
+        if (userHasExistingPrivilegies == NO) {
+            [selectedClient sendCommand:[NSString stringWithFormat:@"CS OP %@ %@", [selectedChannel name], [selectedClient localNickname]]];
+        }
         dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, 1.5 * NSEC_PER_SEC);
         dispatch_after(popTime, dispatch_get_main_queue(), ^(void){
             block(selectedClient, selectedChannel, selectedUsers);
-            [selectedClient sendCommand:[NSString stringWithFormat:@"CS DEOP %@ %@", [selectedChannel name], [selectedClient localNickname]]];
+            if (userHasExistingPrivilegies == NO) {
+                [selectedClient sendCommand:[NSString stringWithFormat:@"CS DEOP %@ %@", [selectedChannel name], [selectedClient localNickname]]];
+            }
         });
     }];
 }
