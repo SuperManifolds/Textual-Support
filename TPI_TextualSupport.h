@@ -9,5 +9,6 @@
                    messageInformation:(NSDictionary *)messageDict;
 
 + (NSMutableArray *)muteListForChannel:(NSString *)channel onClient:(IRCClient *)client;
++ (NSMutableArray *)banListForChannel:(NSString *)channel onClient:(IRCClient *)client;
 
 @end

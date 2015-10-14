@@ -103,7 +103,7 @@
     [self performBlockOnSelectedUsersAsChannelOperator:sender withBlock:^(IRCClient *selectedClient, IRCChannel *selectedChannel, NSArray *selectedUsers){
         for (IRCUser *selectedUser in selectedUsers) {
             IRCUser *realUser = [selectedChannel findMember:[selectedUser nickname]];
-            NSArray *muteList = [TPI_TextualSupport muteListForChannel:[selectedClient name] onClient:selectedClient];
+            NSArray *muteList = [TPI_TextualSupport muteListForChannel:[selectedChannel name] onClient:selectedClient];
             NSLog(@"matching: %@", [TPI_TextualSupportHelper listOfBansMatchingBanlist:muteList withUser:realUser]);
             [selectedClient sendCommand:[NSString stringWithFormat:@"MODE %@ -q *!*@%@", [selectedChannel name], [realUser address]]];
         }
@@ -132,7 +132,25 @@
 
 - (BOOL)validateMenuItem:(NSMenuItem *)item {
     NSInteger menuItemTag = [item tag];
-    return [[mainWindow() menuController] validateMenuItemTag:menuItemTag forItem:item];
+    IRCChannel *selectedChannel = [mainWindow() selectedChannel];
+    IRCClient *selectedClient = [mainWindow() selectedClient];
+    
+    if (menuItemTag == 1511 || menuItemTag == 1513) {
+        for (IRCUser *selectedUser in [self selectedMembers:item]) {
+            IRCUser *realUser = [selectedChannel findMember:[selectedUser nickname]];
+            NSArray *banList = [TPI_TextualSupport banListForChannel:[selectedChannel name] onClient:selectedClient];
+            return [[TPI_TextualSupportHelper listOfBansMatchingBanlist:banList withUser:realUser] count] == 0;
+        }
+    }
+    
+    if (menuItemTag == 424201) {
+        for (IRCUser *selectedUser in [self selectedMembers:item]) {
+            IRCUser *realUser = [selectedChannel findMember:[selectedUser nickname]];
+            NSArray *banList = [TPI_TextualSupport banListForChannel:[selectedChannel name] onClient:selectedClient];
+            return [[TPI_TextualSupportHelper listOfBansMatchingBanlist:banList withUser:realUser] count] > 0;
+        }
+    }
+    return [menuController() validateMenuItemTag:menuItemTag forItem:item];
 }
 
 @end
