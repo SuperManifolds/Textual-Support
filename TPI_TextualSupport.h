@@ -4,9 +4,7 @@
 
 - (void)pluginLoadedIntoMemory;
 - (NSArray *)subscribedServerInputCommands;
-- (void)didReceiveServerInputOnClient:(IRCClient *)client
-                    senderInformation:(NSDictionary *)senderDict
-                   messageInformation:(NSDictionary *)messageDict;
+- (void)didReceiveServerInput:(THOPluginDidReceiveServerInputConcreteObject *)inputObject onClient:(IRCClient *)client;
 
 + (NSMutableArray *)muteListForChannel:(NSString *)channel onClient:(IRCClient *)client;
 + (NSMutableArray *)banListForChannel:(NSString *)channel onClient:(IRCClient *)client;

@@ -16,7 +16,7 @@ static NSMutableDictionary *banList;
 static NSMutableDictionary *muteList;
 
 -  (NSArray *)subscribedServerInputCommands {
-    return @[@"join", @"part", @"004", @"728", @"729", @"367", @"368"];
+    return @[@"join", @"part", @"mode", @"004", @"728", @"729", @"367", @"368"];
 }
 
 - (NSArray *)serverSoftwareWithMuteSupport {
@@ -110,6 +110,33 @@ static NSMutableDictionary *muteList;
         if ([self serverSupportsMute:client]) {
             [client sendCommand:[NSString stringWithFormat:@"MODE %@ +q", channel]];
         }
+    } else if ([command isEqualToString:@"MODE"]) {
+        
+        NSString *channel = [inputObject messageParamaters][0];
+        if ([channel isChannelName:client]) {
+            NSMutableDictionary *muteChannels = [muteList objectForKey:[client uniqueIdentifier]];
+            NSMutableArray *mutes = [muteChannels objectForKey:channel];
+            
+            NSMutableDictionary *banChannels = [banList objectForKey:[client uniqueIdentifier]];
+            NSMutableArray *bans = [banChannels objectForKey:channel];
+            
+            NSArray *modes = [client.supportInfo parseMode:inputObject.messageSequence];
+            for (IRCModeInfo *mode in modes) {
+                if ([mode.modeToken isEqualToString:@"b"]) {
+                    if (mode.modeIsSet) {
+                        [bans addObject:mode.modeParamater];
+                    } else {
+                        [bans removeObject:mode.modeParamater];
+                    }
+                } else if ([mode.modeToken isEqualToString:@"q"]) {
+                    if (mode.modeIsSet) {
+                        [mutes addObject:mode.modeParamater];
+                    } else {
+                        [mutes removeObject:mode.modeParamater];
+                    }
+                }
+            }
+        }
     } else if ([command isEqualToString:@"367"]) {
         NSString *channel = inputObject.messageParamaters[1];
         NSMutableDictionary *banChannels = [banList objectForKey:[client uniqueIdentifier]];
@@ -160,7 +187,6 @@ static NSMutableDictionary *muteList;
 }
 
 + (NSMutableArray *)muteListForChannel:(NSString *)channel onClient:(IRCClient *)client {
-    NSLog(@"mute list: %@", muteList);
     NSMutableDictionary *channels = [muteList objectForKey:[client uniqueIdentifier]];
     return [channels objectForKey:channel];
 }
