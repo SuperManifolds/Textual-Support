@@ -25,8 +25,7 @@ static NSMutableDictionary *muteList;
 
 
 - (void)pluginLoadedIntoMemory {
-	userlistMenu = self.menuController.userControlMenu;
-    inputFieldMenu = [[mainWindow() inputTextField] menu];
+	userlistMenu = menuController().userControlMenu;
     serverSoftwareList = [[NSMutableDictionary alloc] init];
     banList = [[NSMutableDictionary alloc] init];
     muteList = [[NSMutableDictionary alloc] init];
@@ -41,7 +40,7 @@ static NSMutableDictionary *muteList;
 	[textualSupportMenuItems setKeyEquivalent:@""];
     NSMenu *textualSupportMenu = [NSMenu new];
 	[textualSupportMenu setTitle:@"Textual Support"];
-    NSDictionary *supportMessages = dict[@"userlist"];
+    NSArray *supportMessages = dict[@"userlist"];
     [TPI_TextualSupportHelper addItemsFromDictionaryToMenu:textualSupportMenu menuItems:supportMessages selector:@selector(postMenuMessage:)];
     [textualSupportMenuItems setSubmenu: textualSupportMenu];
 	[userlistMenu addItem:[textualSupportMenuItems copy]];
@@ -82,7 +81,7 @@ static NSMutableDictionary *muteList;
     [textualUnmuteUserMenuItem setAction:@selector(unmuteUserOnChannel:)];
     [userlistMenu insertItem:textualUnmuteUserMenuItem atIndex:(indexOfBanItem + 3)];
     
-    self.menuController.userControlMenu = userlistMenu;
+    menuController().userControlMenu = userlistMenu;
 }
 
 - (void)overrideExistingMenuItems {

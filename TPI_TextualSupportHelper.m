@@ -12,16 +12,14 @@
 @implementation TPI_TextualSupportHelper
 
 + (void)addItemsFromDictionaryToMenu:(NSMenu *)menu
-                      menuItems:(NSDictionary *)menuItems
+                      menuItems:(NSArray*)menuItems
                        selector:(SEL)selector {
     
-    for (NSString *menuItemName in menuItems) {
-        if ([menuItems[menuItemName] isKindOfClass:[NSString class]]) {
-            if ([menuItems[menuItemName] isEqualToString: @"seperator"]) {
-                [menu addItem:[NSMenuItem separatorItem]];
-            }
+    for (NSDictionary *menuItem in menuItems) {
+        if ([menuItem[@"Title"] isEqualToString: @"seperator"]) {
+            [menu addItem:[NSMenuItem separatorItem]];
         } else {
-            [self addMenuItemTitled:menuItemName withSelector:selector toMenu:menu message:menuItems[menuItemName][@"Message"]];
+            [self addMenuItemTitled:menuItem[@"Title"] withSelector:selector toMenu:menu message:menuItem[@"Message"]];
         }
     }
 }
